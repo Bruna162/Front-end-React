@@ -1,0 +1,39 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F8EEDF;
+    border: 2px solid #BC3131;
+    padding: 20px;
+    margin: 10px auto;
+    border-radius: 8px;
+    width: 80%;
+}
+
+.list {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.item {
+    margin-right: 1em;
+    color: #FFF;
+}
+
+.item_a {
+    color: rgb(163, 29, 40);;
+    text-decoration: none;
+    font-size: 1.5rem;
+    
+}
+
+.item a:hover {
+    color: #7733ff;
+}
+
+.logo {
+    width: 120px;
+}
+

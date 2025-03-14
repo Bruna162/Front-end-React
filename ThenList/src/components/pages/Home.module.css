@@ -1,0 +1,14 @@
+.caixa {
+    background-color: #F8EEDF;
+    border: 2px solid rgb(163, 29, 40); 
+    padding: 20px; 
+    margin: 10px; 
+    border-radius: 8px; 
+}
+
+.texto{
+    color: #BC3131
+    }  
+.titulo{
+    color: #BC3131
+}
