@@ -1,73 +1,102 @@
-import React from "react";
-import style from './AddAnime.module.css'
-import { useState } from "react";
+import React, { useState } from "react";
+import style from './AddAnime.module.css';
 
 import Input from "../form/input";
 import Select from "../form/Select";
 import Button from "../form/Button";
-const AddAnime = ()=>{
 
-    /*CRIA A ESTRUTURA DE STATE PARA OS DADOS E LIVRO */
-    const [book, setBook] = useState({}); 
-     
-    function handlerChangeBook(event){
-        setBook({...book, [event.target.name] : event.target.value});
+const AddAnime = () => {
+const [anime, setAnime] = useState({});
 
-
-    }
-
-    //Captura de dados do elemento de select
-    function handlerChangeCategory(event){
-        setBook({...book, category : event.target.options[event.target.selectedIndex].text})
-    }
-
-    //Envio dos dados para a API
-    function submit(event){
-        event.preventDefault();
-        console.log(book)
-    };
-
-    return(
-        <section>
-            <h1 className={style.texto}>Adicionar Anime</h1>
-
-            <form onSubmit={submit}>
-
-            <Input 
-                type='nome do livro'
-                name='txt_livro'
-                id='txt_livro'
-                placeholder='Nome da obra'
-                handlerChange={handlerChangeBook}
-            />
-            
-            <Input 
-                type=' autor do livro'
-                name='txt_livro'
-                id='txt_livro'
-                placeholder='Studio'
-                handlerChange={handlerChangeBook}
-            />
-            
-            <Input 
-                type='descriçao do livro'
-                name='txt_livro'
-                id='txt_livro'
-                placeholder='Sinopse'
-                handlerChange={handlerChangeBook}
-            />
-            <Select
-                name='slc_categoria'
-                id='slc_categoria'
-                text='Gênero'
-                handlerChange={handlerChangeCategory    }
-            />
-            <Button
-                label='Adicionar Anime'/>
-                
-            </form>
-        </section>
-    )
+function handlerChangeAnime(event) {
+    setAnime({ ...anime, [event.target.name]: event.target.value });
 }
 
-export default AddAnime
+
+function handlerChangeGenero(event) {
+    setAnime({ ...anime, genero: event.target.options[event.target.selectedIndex].text });
+}
+
+function submit(event) {
+    event.preventDefault();
+    console.log(anime);
+
+    fetch('http://localhost:3000/InserirAnime', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(anime)
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error("Erro ao cadastrar anime.");
+        }
+        return response.text();
+    }).then(data => {
+        console.log("Anime cadastrado com sucesso:", data);
+    })
+    .catch(error => {
+        console.error("Erro:", error);
+    });
+}
+
+return (
+    <section>
+        <h1 className={style.texto}>Adicionar Anime</h1>
+
+        <form onSubmit={submit}>
+            <Input 
+                type='text'
+                name='titulo'
+                id='titulo'
+                placeholder='Nome da obra'
+                handlerChange={handlerChangeAnime}
+            />
+            
+            <Input 
+                type='text'
+                name='estudio'
+                id='estudio'
+                placeholder='Estúdio'
+                handlerChange={handlerChangeAnime}
+            />
+            
+            <Input 
+                type='text'
+                name='sinopse'
+                id='sinopse'
+                placeholder='Sinopse'
+                handlerChange={handlerChangeAnime}
+            />
+
+            <Input 
+                type='text'
+                name='imagem_url'
+                id='imagem_url'
+                placeholder='URL da imagem'
+                handlerChange={handlerChangeAnime}
+            />
+
+            <Input 
+                type='number'
+                name='episodios'
+                id='episodios'
+                placeholder='Quantidade de episódios'
+                handlerChange={handlerChangeAnime}
+            />
+
+            <Select
+                name='genero'
+                id='genero'
+                text='Gênero'
+                options={['Shonen', 'Seinen', 'Isekai', 'Shoujo']}
+                handlerChange={handlerChangeGenero}
+            />
+
+            <Button label='Adicionar Anime' />
+        </form>
+    </section>
+    );
+};
+
+export default AddAnime;
