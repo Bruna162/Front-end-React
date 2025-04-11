@@ -2,11 +2,6 @@ CREATE DATABASE banco_anime;
 
 USE banco_anime;
 
-CREATE TABLE generos (
-    id_genero INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    nome VARCHAR(255) NOT NULL
-);
-
 CREATE TABLE usuarios (
     id_usuarios INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     nome VARCHAR(20) NOT NULL,
@@ -21,8 +16,7 @@ CREATE TABLE animes (
     estudio VARCHAR(255),
     imagem_url VARCHAR(500),
     episodios_totais INT NOT NULL,
-    genero_id INT,
-    FOREIGN KEY (genero_id) REFERENCES generos(id_genero) ON DELETE CASCADE
+    genero ENUM('Shonen', 'Seinen', 'Isekai', 'Shoujo') NOT NULL
 );
 
 CREATE TABLE listas_usuarios (
@@ -32,6 +26,7 @@ CREATE TABLE listas_usuarios (
     status ENUM('Quero Assistir', 'Assistindo', 'Concluído', 'Abandonado') NOT NULL,
     episodios_assistidos INT DEFAULT 0,
     adicionado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id_usuarios) ON DELETE CASCADE,
     FOREIGN KEY (anime_id) REFERENCES animes(id_anime) ON DELETE CASCADE
 );
