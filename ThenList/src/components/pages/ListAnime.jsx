@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import style from './ListAnime.module.css';
+import ImagemAnime from '../../assets/all-anime-japanese.jpg';
+
+import AnimeCard from "../../AnimeCard";
+import Container from "../layout/Container";
 
 const ListAnime = () => {
   const [animes, setAnimes] = useState([]);
@@ -19,6 +23,7 @@ const ListAnime = () => {
       }
       const data = await response.json();
       setAnimes(data);
+      console.log("Animes carregados:", data); // para debug
     } catch (error) {
       console.error("Erro:", error);
     }
@@ -29,30 +34,33 @@ const ListAnime = () => {
   };
 
   return (
-    <section>
+    <section className={style.anime_home}>
       <h1 className={style.texto}>Lista de Animes</h1>
 
-      <button className={style.button} onClick={toggleVisibility}>
-        {isVisible ? 'Ocultar Animes' : 'Mostrar Animes'}
-      </button>
+      <div className={style.buttonWrapper}>
+        <button className={style.button} onClick={toggleVisibility}>
+          {isVisible ? 'Ocultar Animes' : 'Mostrar Animes'}
+        </button>
+      </div>
 
       {isVisible && (
-        <div className={style.animeList}>
+        <Container>
           {animes.length > 0 ? (
-            animes.map(anime => (
-              <div key={anime.id_anime} className={style.animeCard}>
-                <h2>{anime.titulo}</h2>
-                <p><strong>Estúdio:</strong> {anime.estudio}</p>
-                <p><strong>Gênero:</strong> {anime.genero}</p>
-                <p><strong>Sinopse:</strong> {anime.sinopse}</p>
-                <p><strong>Episódios:</strong> {anime.episodios}</p>
-                {anime.imagem_url && <img src={anime.imagem_url} alt={anime.titulo} className={style.animeImage} />}
-              </div>
-            ))
+            <div className={style.animeList}>
+              {animes.map(anime => (
+                <AnimeCard
+                  key={anime.id_anime}
+                  id_anime={anime.id_anime}
+                  titulo={anime.titulo}
+                  estudio={anime.estudio}
+                  imagemPadrao={ImagemAnime}  
+                />
+              ))}
+            </div>
           ) : (
             <p className={style.noAnime}>Não há animes cadastrados.</p>
           )}
-        </div>
+        </Container>
       )}
     </section>
   );

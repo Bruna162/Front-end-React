@@ -9,6 +9,7 @@ import Container from './components/layout/Container'
 import AddAnime from './components/pages/AddAnime'
 import Home from './components/pages/Home'
 import ListAnime from './components/pages/ListAnime'
+import DetailAnime from './components/pages/DetailAnime'
 
 //Layout
 import NavBar from './components/layout/NavBar'
@@ -31,6 +32,7 @@ function App() {
                 <Route path='/' element={<Home />} />
                 <Route path='/AddAnime' element={<AddAnime />} />
                 <Route path='/ListAnime' element={<ListAnime />} />
+                <Route path='/anime/:id_anime' element={<DetailAnime />} />
 
                 </Route>
 

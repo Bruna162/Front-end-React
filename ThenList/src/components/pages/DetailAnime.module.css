@@ -1,0 +1,60 @@
+.detailContainer {
+  width: 1100px;
+  margin: 40px auto;
+  background-color: #F8EEDF; /* vermelho claro */
+  padding: 30px 40px;
+  border-radius: 10px;
+  color: #a50000; /* vermelho escuro no texto */
+  box-shadow: 0 0 20px rgba(165, 0, 0, 0.6); /* sombra vermelho escuro */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.detailContainer h1 {
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  text-align: center;
+  text-shadow: 1px 1px 3px #7b0000; /* sombra texto vermelho escuro */
+}
+
+.detailContainer p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  color: #a50000; /* texto vermelho escuro */
+}
+
+.image {
+  display: block;
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #7b0000; /* sombra vermelho escuro */
+}
+
+.button {
+  display: block;
+  background-color: #a50000; /* vermelho escuro */
+  color: white;
+  padding: 12px 25px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 30px auto 0 auto;
+  transition: background-color 0.3s ease;
+  width: 150px;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #c10000; /* vermelho mais claro no hover */
+}
+
+.loading {
+  color: #ff6666;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 50px;
+}
