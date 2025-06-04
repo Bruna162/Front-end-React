@@ -45,6 +45,7 @@ const AddAnime = () => {
 
       <form onSubmit={submit}>
         <Input 
+          text='Nome do Anime'
           type='text'
           name='titulo'
           id='titulo'
@@ -53,6 +54,7 @@ const AddAnime = () => {
         />
         
         <Input 
+          text='Estudio'
           type='text'
           name='estudio'
           id='estudio'
@@ -61,6 +63,7 @@ const AddAnime = () => {
         />
         
         <Input 
+          text='Sinopse'
           type='text'
           name='sinopse'
           id='sinopse'
@@ -69,6 +72,7 @@ const AddAnime = () => {
         />
 
         <Input 
+          text='Imagem'
           type='text'
           name='imagem_url'
           id='imagem_url'
@@ -77,6 +81,7 @@ const AddAnime = () => {
         />
 
         <Input 
+         text='Episódios'
           type='number'
           name='episodios'
           id='episodios'
@@ -85,9 +90,9 @@ const AddAnime = () => {
         />
 
         <Select
+          text="Gênero"
           name="genero"
           id="genero"
-          text="Gênero"
           options={['Shonen', 'Seinen', 'Isekai', 'Shoujo']}
           handlerChange={handlerChangeGenero}
         />

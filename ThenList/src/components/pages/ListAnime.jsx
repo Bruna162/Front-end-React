@@ -23,7 +23,7 @@ const ListAnime = () => {
       }
       const data = await response.json();
       setAnimes(data);
-      console.log("Animes carregados:", data); // para debug
+      console.log("Animes carregados:", data);
     } catch (error) {
       console.error("Erro:", error);
     }

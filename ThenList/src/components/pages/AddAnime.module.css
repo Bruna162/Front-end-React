@@ -1,3 +1,21 @@
-.texto{
-    color: #F8EEDF;;
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
 }
+
+.form select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.texto {
+  text-align: center;
+  color: white;
+}
+
