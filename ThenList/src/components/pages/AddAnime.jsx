@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import style from './AddAnime.module.css';
+import { useNavigate } from 'react-router-dom'
 
 import Input from "../form/input";
 import Select from "../form/Select";
@@ -7,6 +8,7 @@ import Button from "../form/Button";
 
 const AddAnime = () => {
   const [anime, setAnime] = useState({});
+  const navigate = useNavigate();
 
   function handlerChangeAnime(event) {
     setAnime({ ...anime, [event.target.name]: event.target.value });
@@ -32,7 +34,8 @@ const AddAnime = () => {
       }
       return response.text();
     }).then(data => {
-      console.log("Anime cadastrado com sucesso:", data);
+      navigate('/ListAnime', { state: 'Anime cadastrado com sucesso' }); 
+      alert('Anime cadastrado com sucesso')
     })
     .catch(error => {
       console.error("Erro:", error);

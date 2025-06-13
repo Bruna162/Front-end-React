@@ -38,6 +38,7 @@ const UpdateAnime = () => {
       .then(resp => resp.text())
       .then(() => {
         navigate('/ListAnime', { state: 'Anime alterado com sucesso!' });
+        alert('Anime alterado com sucesso!')
       })
       .catch(err => console.log(err));
   }
